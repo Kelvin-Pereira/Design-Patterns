@@ -1,1 +1,33 @@
-spring.application.name=Design-Patterns
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: Design-Patterns
+  datasource:
+    url: jdbc:h2:mem:dbo;MODE=PostgreSQL;INIT=CREATE SCHEMA IF NOT EXISTS "DESIGN_PATTERNS"
+    username: Design_Patterns
+    password: Design_Patterns123
+    driver-class-name: org.h2.Driver
+  flyway:
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    default-schema: "DESIGN_PATTERNS"
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    defer-datasource-initialization: false
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_schema: "DESIGN_PATTERNS"
+    hibernate:
+      ddl-auto: none
+  h2:
+    console:
+      path: /h2
+      enabled: true
+
+logging:
+  pattern:
+    console: "%clr(%d{HH:mm:ss.SSS}){faint} %clr(%5p) %clr(%15.15t){yellow} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
