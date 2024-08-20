@@ -16,4 +16,13 @@ public class UserEntity {
     @GeneratedValue(generator = "SEQ_USER", strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @Column(name = "CPF")
+    private String cpf;
+
+    @Column(name = "EMAIL")
+    private String email;
+
+    @Column(name = "NOME")
+    private String nome;
+
 }
